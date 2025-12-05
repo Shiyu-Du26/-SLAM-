@@ -1,0 +1,31 @@
+研0时，师兄给了方向，让学习视觉SLAM和ROS，对于一个从物理跨到计算机的人来说无异于听天书，想来想去，再怎么想也改变不了现实，于是决定从学习SLAM开始，记录一下学习路程。
+这里使用了谷歌的Gemini 3pro辅助学习，用学生优惠白嫖了一年，不用白不用。
+
+#day1正式启程！
+
+在给AI输入我的目的之后，AI推荐了三条学习路线：
+1.从 Linux 和 ROS 基础入手
+2.从《视觉 SLAM 十四讲》与 OpenCV 入手
+3.直接上手 Gazebo 仿真环境
+
+我首先排除了直接啃书的2，对我来说只搞理论是没有任何正反馈的，很难坚持学下去。其实我既想从1开始打基础，又想从3开始能边实践边学习，因为正反馈足。
+好吧，于是选择了3。
+##重点： 学习使用 Gazebo（物理仿真器）和 Rviz（数据可视化工具）。
+##实践目标： 在仿真环境中加载一个小车模型，并让它在一个虚拟的房间里跑起来
+
+来吧，任何事情的第一步都是，布置环境。
+
+AI跟我说SLAM领域都是在Linux (Ubuntu) 环境下运行得最顺畅，直接装一个WSL2 (Windows Subsystem for Linux)，在windows里面跑Linux吧，还能调用你的4060显卡呢！比虚拟机强多了！
+
+管理员身份运行Windows PowerShell，输入：
+  wsl --install
+这里是开着梯子代理下的，不然可能会遇到网络问题，最后下载好了。
+提示说这是“适用于 Linux 的 Windows 子系统 2.6.1”，行，我看不懂，略过。
+最后看到
+  password updated successfully
+知道下好了，继续跟着AI走。输入：
+  cat /etc/os-release && sudo apt update
+创建账户、密码等，然后得知自己的版本是**Ubuntu 24.04.3 LTS**，但gemini说最好走“经典稳健”路线（换成 Ubuntu 20.04）遂使用：
+  wsl --unregister Ubuntu
+卸载了ubuntu，又打开微软商店，和网络问题做了n次斗争之后下载了**Ubuntu 20.04.6 LTS**，
+在windows的开始菜单里点开
